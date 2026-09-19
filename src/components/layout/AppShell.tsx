@@ -25,7 +25,7 @@ export default function AppShell() {
   return (
     <div className="blueprint-grid flex h-screen w-screen flex-col bg-background text-foreground">
       <Navbar />
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-col flex-1 overflow-hidden md:flex-row">
         <Sidebar />
         <main className="flex-1 overflow-auto">
           <AnimatedOutlet />

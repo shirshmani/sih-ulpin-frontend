@@ -33,8 +33,8 @@ export default function ViewerPage() {
   return (
     <div className="flex h-full flex-col">
       <div className="border-b border-border p-3 text-sm text-muted">{statusText}</div>
-      <div className="flex flex-1 overflow-hidden">
-        <div className="flex-1 bg-neutral-950">
+      <div className="flex flex-1 flex-col overflow-hidden lg:flex-row">
+        <div className="flex-1 bg-neutral-950 min-h-[50vh] lg:min-h-0">
           <Scene
             modelUrl={isSupported3D ? activeUrl : null}
             modelExtension={isSupported3D ? activeExtension : null}
@@ -43,7 +43,7 @@ export default function ViewerPage() {
             intersections={intersections}
           />
         </div>
-        <div className="flex w-64 shrink-0 flex-col overflow-y-auto border-l border-border/60">
+        <div className="flex w-full shrink-0 flex-col overflow-y-auto border-t lg:border-t-0 lg:border-l border-border/60 lg:w-80">
           <IntersectionReportPanel result={intersections} />
           <FlatDetailsPanel flat={selectedFlat} />
         </div>
