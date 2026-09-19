@@ -4,7 +4,7 @@ import { dummyIntersections } from '@/services/mocks/dummyIntersectionData'
 export const handlers = [
   http.post('/api/v1/cadastre/process', async () => {
     await delay(3000)
-    return HttpResponse.json({ modelUrl: '/models/approved_cadastre.glb' })
+    return HttpResponse.json({ modelUrl: 'DEMO_BUILDING' })
   }),
 
   http.get('/api/v1/intersections', () => {

@@ -14,15 +14,18 @@ export default function ViewerPage() {
   const remoteModelUrl = useUploadStore((s) => s.remoteModelUrl)
   const objectUrl = useObjectUrl(file)
 
-  const activeUrl = remoteModelUrl ?? objectUrl
-  const activeExtension = remoteModelUrl ? getUrlExtension(remoteModelUrl) : file ? getFileExtension(file) : null
+  const isDemoBuilding = remoteModelUrl === 'DEMO_BUILDING'
+  const activeUrl = isDemoBuilding ? null : (remoteModelUrl ?? objectUrl)
+  const activeExtension = isDemoBuilding ? null : (remoteModelUrl ? getUrlExtension(remoteModelUrl) : file ? getFileExtension(file) : null)
   const isSupported3D = activeExtension ? SUPPORTED_3D_EXTENSIONS.includes(activeExtension) : false
 
   const { flats, tunnel, intersections } = useDummyBuildingData()
   const selectedFlatId = useSceneStore((s) => s.selectedFlatId)
   const selectedFlat = flats.find((f) => f.id === selectedFlatId) ?? null
 
-  const statusText = remoteModelUrl
+  const statusText = isDemoBuilding
+    ? 'Rendering 3D building generated from blueprint analysis'
+    : remoteModelUrl
     ? 'Rendering model generated from blueprint analysis'
     : !file
       ? 'No file uploaded — showing demo building with dummy flats/owners.'
