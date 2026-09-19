@@ -1,0 +1,53 @@
+import Scene from '@/components/scene/Scene'
+import FlatDetailsPanel from '@/components/panels/FlatDetailsPanel'
+import IntersectionReportPanel from '@/components/panels/IntersectionReportPanel'
+import { useUploadStore } from '@/store/useUploadStore'
+import { useSceneStore } from '@/store/useSceneStore'
+import { useObjectUrl } from '@/hooks/useObjectUrl'
+import { useDummyBuildingData } from '@/hooks/useDummyBuildingData'
+import { getFileExtension, getUrlExtension } from '@/utils/fileValidators'
+
+const SUPPORTED_3D_EXTENSIONS = ['.glb', '.gltf', '.obj', '.las', '.laz']
+
+export default function ViewerPage() {
+  const file = useUploadStore((s) => s.file)
+  const remoteModelUrl = useUploadStore((s) => s.remoteModelUrl)
+  const objectUrl = useObjectUrl(file)
+
+  const activeUrl = remoteModelUrl ?? objectUrl
+  const activeExtension = remoteModelUrl ? getUrlExtension(remoteModelUrl) : file ? getFileExtension(file) : null
+  const isSupported3D = activeExtension ? SUPPORTED_3D_EXTENSIONS.includes(activeExtension) : false
+
+  const { flats, tunnel, intersections } = useDummyBuildingData()
+  const selectedFlatId = useSceneStore((s) => s.selectedFlatId)
+  const selectedFlat = flats.find((f) => f.id === selectedFlatId) ?? null
+
+  const statusText = remoteModelUrl
+    ? 'Rendering model generated from blueprint analysis'
+    : !file
+      ? 'No file uploaded — showing demo building with dummy flats/owners.'
+      : isSupported3D
+        ? `Rendering: ${file.name}`
+        : `${file.name}: unsupported file type.`
+
+  return (
+    <div className="flex h-full flex-col">
+      <div className="border-b border-border p-3 text-sm text-muted">{statusText}</div>
+      <div className="flex flex-1 overflow-hidden">
+        <div className="flex-1 bg-neutral-950">
+          <Scene
+            modelUrl={isSupported3D ? activeUrl : null}
+            modelExtension={isSupported3D ? activeExtension : null}
+            flats={flats}
+            tunnel={tunnel}
+            intersections={intersections}
+          />
+        </div>
+        <div className="flex w-64 shrink-0 flex-col overflow-y-auto border-l border-border/60">
+          <IntersectionReportPanel result={intersections} />
+          <FlatDetailsPanel flat={selectedFlat} />
+        </div>
+      </div>
+    </div>
+  )
+}

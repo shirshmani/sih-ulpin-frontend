@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f2efe6;
+  --surface: #ffffff;
+  --surface-alt: #e8e2d3;
+  --foreground: #12283f;
+  --muted: #5b6b7d;
+  --border: #d9d2c0;
+  --accent: #b9803a;
+  --accent-foreground: #ffffff;
+  --grid-line: #12283f14;
+}
+
+.dark {
+  --background: #0a1826;
+  --surface: #12283f;
+  --surface-alt: #1b3a5c;
+  --foreground: #edeff2;
+  --muted: #8fa3b8;
+  --border: #294b6b;
+  --accent: #d9a055;
+  --accent-foreground: #0a1826;
+  --grid-line: #d9a05512;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-display: 'Space Grotesk', ui-sans-serif, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
