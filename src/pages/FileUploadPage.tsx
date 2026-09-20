@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router'
 import { useUploadStore } from '@/store/useUploadStore'
 import { isAcceptedModelFile } from '@/utils/fileValidators'
 
-const IMAGE_EXTENSIONS = ['.jpg', '.jpeg']
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png']
 
 function isAcceptedImageFile(file: File): boolean {
   const name = file.name.toLowerCase()
@@ -116,7 +116,7 @@ export default function FileUploadPage() {
       </div>
 
       <h2 className="font-display text-xl font-semibold text-foreground">Upload Cadastral Blueprint</h2>
-      <p className="mt-1 text-sm text-muted">Accepted: .jpg, .jpeg — a 3D model is generated server-side</p>
+      <p className="mt-1 text-sm text-muted">Accepted: .jpg, .jpeg, .png — a 3D model is generated server-side</p>
 
       <div
         {...getBlueprintRootProps()}
