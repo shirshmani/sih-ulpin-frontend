@@ -5,6 +5,7 @@ import SceneLighting from './SceneLighting'
 import PlaceholderBuilding from './PlaceholderBuilding'
 import ModelLoader from './ModelLoader'
 import { ModelErrorBoundary } from './ModelErrorBoundary'
+import IntersectionHighlight from './IntersectionHighlight'
 import type { FlatRecord, TunnelRecord } from '@/types/flat'
 import type { IntersectionResult } from '@/types/intersection'
 
