@@ -42,11 +42,14 @@ export default function Scene({ modelUrl, modelExtension, flats, tunnel, interse
       <SceneLighting />
       <Grid args={[20, 20]} cellColor="#404040" sectionColor="#606060" fadeDistance={30} />
       {hasModel ? (
-        <ModelErrorBoundary fallback={<ErrorPlaceholder />}>
-          <Suspense fallback={<LoadingPlaceholder />}>
-            <ModelLoader url={modelUrl!} extension={modelExtension!} />
-          </Suspense>
-        </ModelErrorBoundary>
+        <group>
+          <ModelErrorBoundary fallback={<ErrorPlaceholder />}>
+            <Suspense fallback={<LoadingPlaceholder />}>
+              <ModelLoader url={modelUrl!} extension={modelExtension!} />
+            </Suspense>
+          </ModelErrorBoundary>
+          <IntersectionHighlight regions={intersections.regions} />
+        </group>
       ) : (
         <Suspense fallback={<LoadingPlaceholder />}>
           <PlaceholderBuilding flats={flats} tunnel={tunnel} intersections={intersections} />

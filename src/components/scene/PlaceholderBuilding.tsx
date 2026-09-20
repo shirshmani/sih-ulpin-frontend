@@ -88,6 +88,18 @@ export default function PlaceholderBuilding({ flats, tunnel, intersections }: Pl
         {`${tunnel.label} — ${tunnel.depthMeters}m deep`}
       </Text>
 
+      {/* Neighboring building causing conflict with Flat 2B (East side) */}
+      <mesh position={[2.5, 1.5, 0.85]}>
+        <boxGeometry args={[1.5, 3, 1.5]} />
+        <meshStandardMaterial color="#3f3f46" />
+      </mesh>
+      
+      {/* Our building's deep foundation colliding with tunnel */}
+      <mesh position={[0, -1, 0]}>
+        <boxGeometry args={[3.2, 2, 3.2]} />
+        <meshStandardMaterial color="#525252" />
+      </mesh>
+
       <IntersectionHighlight regions={intersections.regions} />
     </group>
   )
