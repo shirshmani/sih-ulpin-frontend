@@ -8,7 +8,7 @@ export const dummyIntersections: IntersectionResult = {
       label: 'Foundation / utility tunnel',
       description: 'The building foundation overlaps the utility tunnel corridor by an estimated 0.6m.',
       severity: 'major',
-      boundingBox: [-1, -2.5, 2, 1, -1.5, 4],
+      boundingBox: [-1, -2.5, -1, 1, -1.5, 1],
     },
     {
       id: 'intersection-2',
