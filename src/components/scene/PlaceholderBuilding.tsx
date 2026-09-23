@@ -23,10 +23,8 @@ const SELECTED_COLOR = new THREE.Color('#facc15') // Yellow glow
 const boxGeom = new THREE.BoxGeometry(1.5, FLOOR_HEIGHT * 0.85, 1.5)
 const defaultMat = new THREE.MeshStandardMaterial({ 
   color: '#ffffff',
-  transparent: true,
-  opacity: 0.85,
-  roughness: 0.1,
-  metalness: 0.5,
+  roughness: 0.2,
+  metalness: 0.1,
 })
 
 interface PlaceholderBuildingProps {
@@ -97,14 +95,14 @@ export default function PlaceholderBuilding({ flats, tunnel, intersections }: Pl
       {/* Neighboring building causing MINOR conflict (Orange) */}
       <mesh position={[2.5, 1.5, 0.85]}>
         <boxGeometry args={[1.5, 3, 1.5]} />
-        <meshStandardMaterial color="#ea580c" transparent opacity={0.7} />
+        <meshStandardMaterial color="#ea580c" roughness={0.3} />
         <Edges color="#fdba74" />
       </mesh>
       
       {/* Our building's deep foundation causing MAJOR conflict (Red) */}
       <mesh position={[0, -1, 0]}>
         <boxGeometry args={[3.2, 2, 3.2]} />
-        <meshStandardMaterial color="#dc2626" transparent opacity={0.6} />
+        <meshStandardMaterial color="#dc2626" roughness={0.3} />
         <Edges color="#fca5a5" />
       </mesh>
 
