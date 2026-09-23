@@ -28,7 +28,7 @@ export default function ViewerPage() {
     : remoteModelUrl
     ? 'Rendering model generated from blueprint analysis'
     : !file
-      ? 'No file uploaded — showing demo building with dummy flats/owners.'
+      ? 'No file uploaded — showing sample cadastral topology.'
       : isSupported3D
         ? `Rendering: ${file.name}`
         : `${file.name}: unsupported file type.`

@@ -8,12 +8,13 @@ export default function LandingPage() {
         <p className="font-mono text-xs text-muted">Smart India Hackathon 2026, Problem Statement SIH26011</p>
         <p className="font-mono text-xs text-muted">Ministry of Rural Development</p>
 
-        <h1 className="mt-6 font-display text-3xl font-semibold leading-snug text-foreground md:text-4xl">
-          A flat on the fifth floor and a shop below it share the same coordinates on paper.
+        <h1 className="mt-6 font-display text-3xl font-semibold leading-snug text-foreground md:text-5xl">
+          BHU-STAMBH 3D
         </h1>
+        <h2 className="mt-2 text-xl font-medium text-foreground">True 3D Volumetric Cadastre & Interactive 3D-ULPIN</h2>
         <p className="mt-4 max-w-lg text-muted">
-          This project gives each unit in a structure its own verified place in three dimensions, generates a 3D
-          ULPIN for it, and checks the model for boundary or underground conflicts before they become disputes.
+          A vertical cadastral identity framework that extends India’s 14-digit ULPIN into the Z-axis. 
+          Every property right becomes its own registered volume with a deterministically generated 3D-ULPIN, preventing overlaps before they are issued.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">

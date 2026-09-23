@@ -48,10 +48,10 @@ export default function PropertyInputPage() {
       <h2 className="font-display text-xl font-semibold text-foreground">Property Input</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4">
         <label className="flex flex-col gap-1 text-sm text-muted">
-          ULPIN (if known)
+          Parent ULPIN (if known)
           <input
             {...register('ulpinId')}
-            title="The 16-digit ULPIN if this property already has one — leave blank to generate a new one"
+            title="The 14-digit parent ULPIN if this property already has one — leave blank to generate a new 3D-ULPIN"
             className="rounded-md border border-border bg-surface px-3 py-2 font-mono text-foreground"
           />
         </label>

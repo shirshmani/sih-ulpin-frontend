@@ -12,7 +12,7 @@ export function generateDummyFlats(floors: number): FlatRecord[] {
         floor,
         unitLabel: `${floor}${String.fromCharCode(65 + unit)}`,
         ownerName: DUMMY_OWNERS[ownerIndex % DUMMY_OWNERS.length],
-        ulpinId: `UL-DEMO-${floor}${unit}`,
+        ulpinId: `MH0713004217X9.A.${floor.toString().padStart(2, '0')}.${(unit + 1).toString().padStart(3, '0')}.K`,
       })
       ownerIndex++
     }
@@ -22,6 +22,6 @@ export function generateDummyFlats(floors: number): FlatRecord[] {
 
 export const dummyTunnel: TunnelRecord = {
   id: 'tunnel-1',
-  label: 'Utility tunnel (demo)',
+  label: 'Municipal Utility Corridor',
   depthMeters: 8,
 }

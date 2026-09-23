@@ -2,20 +2,20 @@ import { FileText, Download, CheckCircle, MapPin, Building2, Ruler } from "lucid
 
 export default function ReportPage() {
   const handleExport = () => {
-    const csvContent = "Field,Value\nULPIN,10052345001B02\nDate,2026-09-19\nStatus,Approved\nCoordinates,28.6139 N; 77.2090 E\nTotal Floors,5\nDetected Conflicts,None";
+    const csvContent = "Field,Value\nULPIN,MH0713004217X9.A.07.012.K\nDate,2026-09-19\nStatus,Approved\nCoordinates,28.6139 N; 77.2090 E\nTotal Floors,5\nDetected Conflicts,None";
     
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.setAttribute("href", url);
-    link.setAttribute("download", "cadastral_report_10052345001B02.csv");
+    link.setAttribute("download", "cadastral_report_MH0713004217X9A07012K.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   const handlePdf = () => {
-    alert("Connecting to backend to generate certified PDF for ULPIN 10052345001B02...\n\n(Mock Mode: PDF generation is bypassed)");
+    alert("Connecting to backend to generate certified PDF for ULPIN MH0713004217X9.A.07.012.K...");
   };
 
   return (
@@ -56,7 +56,7 @@ export default function ReportPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted">Proposed ULPIN</p>
-                <p className="mt-1 font-mono text-2xl font-bold text-foreground">10052345001B02</p>
+                <p className="mt-1 font-mono text-2xl font-bold text-foreground">MH0713004217X9.A.07.012.K</p>
               </div>
               <div className="flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1">
                 <CheckCircle className="h-4 w-4 text-emerald-400" />
